@@ -1,15 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using API.Data.SeedDataHelper;
 using API.Dtos;
 using API.Interface;
 using API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+  [Authorize]
   [ApiController]
   [Route("api/[controller]")]
   public class CoursesController : ControllerBase
@@ -35,6 +38,8 @@ namespace API.Controllers
         return NotFound();
       }
 
+      var userId = GetUserId();
+
       var responseDto = new CourseDetailsByLessonDto
       {
         Id = lesson.Id,
@@ -57,7 +62,7 @@ namespace API.Controllers
                   Id = l.Id,
                   Name = l.Name,
                   Order = l.Order,
-                  IsCompleted = IsLessonCompleted(l)
+                  IsCompleted = IsLessonCompleted(l, userId)
                 };
               }))
             };
@@ -76,16 +81,35 @@ namespace API.Controllers
         return BadRequest();
       }
 
-      var result = await _repo.CreateWatchLog(id, pw);
+      var result = await _repo.CreateWatchLog(id, pw, GetUserId());
       if (result)
         return NoContent();
       else
         return BadRequest();
     }
 
-    private bool IsLessonCompleted(Lesson lesson)
+    private bool IsLessonCompleted(Lesson lesson, string userId)
     {
-      return lesson.WatchLogs.Any() ? lesson.WatchLogs.Max(w => w.PercentageWatched) == 100 : false;
+      if (!lesson.WatchLogs.Any())
+      {
+        return false;
+      }
+
+      if (userId == null)
+      {
+        return lesson.WatchLogs.Max(w => w.PercentageWatched) == 100;
+      }
+      else
+      {
+        return lesson.WatchLogs
+          .Where(w => w.UserId == userId)
+          .Max(w => w?.PercentageWatched) == 100;
+      }
+    }
+
+    private string GetUserId()
+    {
+      return User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value;
     }
   }
 }

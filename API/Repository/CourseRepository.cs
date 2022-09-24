@@ -38,7 +38,15 @@ namespace API.Repository
         PercentageWatched = percentageWatched
       };
       _context.WatchLogs.Add(watchLog);
-      return await _context.SaveChangesAsync() > 0;
+
+      try
+      {
+        return await _context.SaveChangesAsync() > 0;
+      }
+      catch (System.Exception)
+      {
+        return false;
+      }
     }
 
     public async Task<Lesson> GetLessonById(string id, bool includeSection, bool includeCourse)

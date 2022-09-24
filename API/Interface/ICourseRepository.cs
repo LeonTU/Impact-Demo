@@ -9,7 +9,7 @@ namespace API.Interface
 {
   public interface ICourseRepository
   {
-    Task<bool> CreateWatchLog(string lessonId, int percentageWatched, string userId = null);
+    Task<bool> CreateWatchLog(string lessonId, int percentageWatched, string userId);
     Task<Lesson> GetLessonById(string id, bool includeSection = false, bool includeCourse = false);
     Task<Course> GetFullCourseDetailsById(string id);
   }
