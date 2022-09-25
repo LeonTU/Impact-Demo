@@ -1,0 +1,102 @@
+{
+	"info": {
+		"_postman_id": "80ee1b8c-bee8-46fa-b12f-3c65e2e705cd",
+		"name": "Impact",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12894971"
+	},
+	"item": [
+		{
+			"name": "Get Full Course Details by User Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2NjM1NzI2NjUsImV4cCI6MTY5NTEwODY2NSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIlVzZXJJZCI6IjdhMWRkYWI2LTU5YjktNDQ5YS1hZTkwLTQwNzAxZjkxNThlYSJ9.sD29NHqV52yFkezq8NQ8lUp-hRAAA4L3BUe3slikP6Y",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5217/api/courses/lesson/0ebf02ad-413d-42d3-a28f-b2acfc93a2ca",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5217",
+					"path": [
+						"api",
+						"courses",
+						"lesson",
+						"0ebf02ad-413d-42d3-a28f-b2acfc93a2ca"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post a new watchlog",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2NjM1NzI2NjUsImV4cCI6MTY5NTEwODY2NSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIlVzZXJJZCI6IjdhMWRkYWI2LTU5YjktNDQ5YS1hZTkwLTQwNzAxZjkxNThlYSJ9.0YY7JRPKPSi8R9pI1mJawNQqKSnD8DHKReXqeJsuS9I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5217/api/courses/watchLog/1341ea73-1c77-46c6-be4f-ff8c40f299c7?pw=100",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5217",
+					"path": [
+						"api",
+						"courses",
+						"watchLog",
+						"1341ea73-1c77-46c6-be4f-ff8c40f299c7"
+					],
+					"query": [
+						{
+							"key": "pw",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login and receive a token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5217/api/auth/login/Lee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5217",
+					"path": [
+						"api",
+						"auth",
+						"login",
+						"Lee"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
