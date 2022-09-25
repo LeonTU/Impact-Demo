@@ -18,7 +18,9 @@ Use Postman to test two endpoints
 
 ### Endpoints
 
-GET api/courses/lesson/{id} return the complete detail of lesson including the course section based on passed lesson Id.
+GET api/courses/lesson returns the lesson list incuding id and name. The requests in postman collection can not be used directly because all the ids are generated and not hardcoded. Therefore the ids will be different when database is updated. Use this endpoint to get the latest ids of lessons, then use the new ids to test the rest endpoints.
+
+GET api/courses/lesson/{id} returns the complete detail of lesson including the course section based on passed lesson Id.
 
 POST api/courses/watchLog/{lessonId}?pw={percentageWatched} - create an new record on watchLog table, after this API is successful, the isCompleted field on the get lesson detail API will be updated.
 

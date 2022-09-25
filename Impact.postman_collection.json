@@ -1,11 +1,32 @@
 {
 	"info": {
-		"_postman_id": "80ee1b8c-bee8-46fa-b12f-3c65e2e705cd",
+		"_postman_id": "5a3012d4-0087-4890-9ffc-1cf09e1488c9",
 		"name": "Impact",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "12894971"
 	},
 	"item": [
+		{
+			"name": "Get Lesson List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5217/api/courses/lesson",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5217",
+					"path": [
+						"api",
+						"courses",
+						"lesson"
+					]
+				}
+			},
+			"response": []
+		},
 		{
 			"name": "Get Full Course Details by User Id",
 			"request": {
