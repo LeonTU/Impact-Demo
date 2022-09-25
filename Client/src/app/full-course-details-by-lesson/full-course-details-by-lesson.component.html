@@ -1,0 +1,19 @@
+<div *ngIf="course$ | async as courseDetailsByLesson">
+  <button routerLink="">Back to list</button>
+  <h5>Current lesson: {{courseDetailsByLesson.name}}</h5>
+  <h5>Course: {{courseDetailsByLesson.course.name}}</h5>
+  <table class="table caption-top" *ngFor="let section of courseDetailsByLesson.course.sections">
+    <caption>Section: {{section.name}}</caption>
+    <tr>
+      <th>Lesson</th>
+      <th>
+        IsCompleted
+        <h6> ({{hintMessage}}) </h6>
+      </th>
+    </tr>
+    <tr *ngFor="let lesson of section.lessons">
+      <td>{{lesson.name}}</td>
+      <td [ngStyle]="{'font-weight': lesson.isCompleted ? 'bold' : 'normal'}">{{lesson.isCompleted}}</td>
+    </tr>
+  </table>
+</div>

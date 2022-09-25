@@ -23,6 +23,16 @@ namespace API.Controllers
       _repo = repo;
     }
 
+    [AllowAnonymous]
+    [HttpGet("lesson")]
+    public async Task<ActionResult> GetLessonList()
+    {
+      var lists = await _repo.GetLessonList();
+
+      return Ok(lists);
+    }
+
+    [AllowAnonymous]
     [HttpGet("lesson/{id}")]
     public async Task<ActionResult<CourseDetailsByLessonDto>> Get(string id)
     {
@@ -73,6 +83,7 @@ namespace API.Controllers
       return Ok(responseDto);
     }
 
+    [AllowAnonymous]
     [HttpPost("watchlog/{id}")]
     public async Task<ActionResult> CreateWatchLog(string id, int pw)
     {

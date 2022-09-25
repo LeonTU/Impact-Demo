@@ -1,0 +1,5 @@
+<div>
+  <h2>Welcome, {{userName}} !</h2>
+  <input [disabled]="isLogin" type="text" [(ngModel)]="inputUser">
+  <button (click)="buttonClicked()">{{isLogin ? 'Logout' : 'Login'}}</button>
+</div>

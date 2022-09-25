@@ -1,0 +1,7 @@
+<div *ngIf="lessons$ | async as lessons">
+  <ul>
+    <li *ngFor="let lesson of lessons">
+      <app-lesson-item [lesson]="lesson"></app-lesson-item>
+    </li>
+  </ul>
+</div>

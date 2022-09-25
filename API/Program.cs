@@ -37,6 +37,17 @@ builder.Services.AddDbContext<PostgresDbContext>(options =>
 );
 
 builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+
+builder.Services.AddCors(options =>
+  {
+    options.AddPolicy("CorsPolicy", policy =>
+    {
+      policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
+      policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200");
+    });
+  }
+);
 
 var app = builder.Build();
 
@@ -48,6 +59,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("CorsPolicy");
 
 app.UseAuthentication();
 

@@ -79,5 +79,19 @@ namespace API.Repository
 
       return course;
     }
+
+    public async Task<List<SimpleLessonDto>> GetLessonList()
+    {
+      var lessonList = await _context.Lessons
+        .Select(l => new SimpleLessonDto
+        {
+          Id = l.Id,
+          Name = l.Name
+        })
+        .OrderBy(l => l.Name)
+        .ToListAsync();
+
+      return lessonList;
+    }
   }
 }

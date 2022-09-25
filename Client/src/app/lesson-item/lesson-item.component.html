@@ -1,0 +1,10 @@
+<div>
+  <a [routerLink]="['lesson', lesson.id]">
+    {{lesson.name}}
+  </a>
+</div>
+<div>
+  <input type="number" [(ngModel)]="percentageWatched">
+  <span>{{feedbackMessage}}</span>
+</div>
+<button type="button" (click)="updatePercentageWatched()">Update Percentage Played</button>
